@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body{
+            padding: 50px 100px;
+            background-color: gray;
+        }
+        h1{
+            text-align: center;
+            color:white;
+        }
+        #container{
+            text-align: center;
+            background-color: blue;
+            padding: 50px;
+            border: 10px solid white;
+            border-radius: 150px;
+        }
+        .input-div{
+            display: inline-block;
+        }
+        .inp{
+            padding: 5px 10px;
+            margin: 5px;
+            font-size: 30px;
+            font-weight: bold;
+            width: 250px;
+            text-align: center;
+        }
+        label{
+            font-size: 22px;
+            color: white;
+        }
+        .A{
+            display: inline-block;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+        <div class="input-div">
+            <label> Celsius</label><br>
+            <input type="number" value="0" id="cel" class="inp" onfocus="fun()">
+        </div>
+        <h1 class="A">=</h1>
+        <div class="input-div">
+            <label> Fahrenheit</label><br>
+            <input type="number" value="32" id="fah" class="inp" onfocus="notfun()">
+        </div>
+    </div>
+
+    <script>
+        var cel=document.getElementById('cel')
+        var fah=document.getElementById('fah')
+
+        cel.addEventListener('input', function(){
+            let c = this.value
+            let f = (c * 9/5)+32;
+            if(!Number.isInteger(f)){
+                f = f.toFixed(4);
+            }
+            fah.value=f;
+
+        })
+
+        fah.addEventListener('input', function(){
+            let f = this.value;
+            let c = (f - 32) * 5/9;
+            if(!Number.isInteger(c)){
+                c = c.toFixed(4);
+            }
+            cel.value = c
+        })
+        function fun()
+        {
+            document.getElementById('cel').style.backgroundColor="yellow"
+        }
+        function notfun()
+        {
+            document.getElementById('fah').style.backgroundColor="lime"
+        }
+    </script>
+</body>
+</html>
